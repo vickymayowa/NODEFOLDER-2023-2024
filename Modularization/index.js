@@ -1,25 +1,23 @@
-const express = require("express")
-const app = express()
-const dotenv = require("dotenv") 
+const express = require("express");
+const app = express();
+const dotenv = require("dotenv");
 const cors = require('cors');
-// const connectDB = require('./config/db.js')
 
-dotenv.config()
+dotenv.config();
 
 const PORT = process.env.PORT || 5500;
 
-const userRoute = require("./routes/user.route.js")
-//Connect to mongodb database
+const userRoute = require("./routes/user.route.js");
 
-// connectDB(); 
-app.use("/user",userRoute)
-app.use(cors());
-
-const corsOptions = { origin: 'http://localhost:5173',};
+const corsOptions = { origin: 'http://localhost:5173' };
 app.use(cors(corsOptions));
 
-app.get("/",( req,res )=>{
-    res.send("Welcome to our Home page")
-})
+app.use("/user", userRoute);
 
-app.listen(PORT,()=>{ console.log(`Server is running on ${PORT}`)})
+app.get("/", (req, res) => {
+  res.send("Welcome to our Home page");
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on ${PORT}`);
+});
