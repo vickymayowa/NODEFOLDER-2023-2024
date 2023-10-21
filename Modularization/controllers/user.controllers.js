@@ -1,5 +1,5 @@
 const userWelcome = (req , res) =>{
-    res.send('welcome to our website');
+    res.send('Welcome new user');
 }
 
 module.exports = userWelcome

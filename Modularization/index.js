@@ -1,8 +1,8 @@
 const express = require("express")
 const app = express()
 const dotenv = require("dotenv") 
-
-const connectDB = require('./config/db.js')
+const cors = require('cors');
+// const connectDB = require('./config/db.js')
 
 dotenv.config()
 
@@ -13,6 +13,10 @@ const userRoute = require("./routes/user.route.js")
 
 // connectDB(); 
 app.use("/user",userRoute)
+app.use(cors());
+
+const corsOptions = { origin: 'http://localhost:5173',};
+app.use(cors(corsOptions));
 
 app.get("/",( req,res )=>{
     res.send("Welcome to our Home page")
