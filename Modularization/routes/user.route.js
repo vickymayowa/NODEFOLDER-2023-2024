@@ -8,9 +8,9 @@ const {
 } = require("../controllers/user.controllers");
 
 router.get("/", userWelcome);
-router.get("/api/register", register);
-router.get("/api/login", login);
-router.get("/api/logout",logout)
+router.post("/api/register", register);
+router.post("/api/login", login);
+router.post("/api/logout",logout)
 
 
 module.exports = router;

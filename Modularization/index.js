@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db.js");
 const userRoute = require("./routes/user.route.js");
-const corsOptions = { origin: "http://localhost:5173" };
+// const corsOptions = { origin: "http://localhost:5173/button" };
 
 dotenv.config();
 
@@ -12,7 +12,10 @@ const PORT = process.env.PORT || 5500;
 
 connectDB();
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors());
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
 
 app.use("/", userRoute);
 app.use("/api/register", userRoute);
