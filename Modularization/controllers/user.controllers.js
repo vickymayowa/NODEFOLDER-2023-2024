@@ -1,4 +1,4 @@
-const Users = require("../models/user.model")
+const userModel = require("../models/user.model")
 
 const userWelcome = (req, res) => {
   res.send([{ Message: "Welcome to Our Website" }]);
@@ -19,16 +19,10 @@ const userWelcome = (req, res) => {
 // };
 
 const register = (req,res)=>{
-  const { fullname, email, username, password } = req.body;
-
-  const newUser = new Users({
-    fullname,
-    email,
-    username,
-    password,
-  });
-
-  newUser.save()
+  let form = new userModel(req.body)
+  console.log(form);
+  // let form = new userModel({name: "Elo"})
+  form.save()
     .then((user) => {
       console.log(`UserSaved: ${user}`);
       res.status(201).json({ message: 'User registered successfully' });
@@ -37,6 +31,7 @@ const register = (req,res)=>{
       console.error(`Error Creating User: ${error}`);
       res.status(500).json({ message: 'Error creating user' });
     });
+
 }
 
 const login = (req, res) => {
