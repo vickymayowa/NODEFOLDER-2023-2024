@@ -21,15 +21,14 @@ const userWelcome = (req, res) => {
 const register = (req,res)=>{
   let form = new userModel(req.body)
   console.log(form);
-  // let form = new userModel({name: "Elo"})
   form.save()
     .then((user) => {
-      console.log(`UserSaved: ${user}`);
       res.status(201).json({ message: 'User registered successfully' });
+      res.send({status:true , message:'User registered successfully'})
     })
     .catch((error) => {
-      console.error(`Error Creating User: ${error}`);
       res.status(500).json({ message: 'Error creating user' });
+      res.send({status:true,message:'Error sending data'})
     });
 
 }
