@@ -31,6 +31,7 @@ const userSchema = new mongoose.Schema({
       }else{
         console.log(hash)
         this.password = hash
+        next()
       }
     })
   })

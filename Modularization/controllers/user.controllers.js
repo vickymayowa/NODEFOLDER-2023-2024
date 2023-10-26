@@ -20,7 +20,6 @@ const userWelcome = (req, res) => {
 
 const register = (req,res)=>{
   let form = new userModel(req.body)
-  console.log(form);
   form.save()
     .then((user) => {
       res.status(201).json({ message: 'User registered successfully' });
