@@ -20,22 +20,23 @@ const userWelcome = (req, res) => {
 
 const register = (req,res)=>{
   let form = new userModel(req.body)
+  console.log(form)
   form.save()
     .then((user) => {
       res.status(201).json({ message: 'User registered successfully' });
-      res.send({status:true , message:'User registered successfully'})
+      // res.send({status:true , message:'User registered successfully'})
+      console.log(user)
     })
     .catch((error) => {
-      res.status(500).json({ message: 'Error creating user' });
-      res.send({status:true,message:'Error sending data'})
+      console.log(error)
     });
 
 }
 
-const login = (req, res) => {
-  res.send([{ Message: "Not Authorized : No token" }]);
-  console.log("Not Authorized : No token" )
-};
+const login = (req,res)=>{
+  console.log("Kindly input your details")
+}
+
 
 const logout = (req, res) => {
   res.send([{ Message: "Log out SuccessFully:" }]);

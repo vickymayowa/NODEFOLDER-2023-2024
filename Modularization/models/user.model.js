@@ -29,7 +29,6 @@ const userSchema = new mongoose.Schema({
       if(err){
         console.log(err)
       }else{
-        console.log(hash)
         this.password = hash
         next()
       }
