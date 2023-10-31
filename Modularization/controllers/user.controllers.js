@@ -34,7 +34,15 @@ const register = (req,res)=>{
 }
 
 const login = (req,res)=>{
-  console.log("Kindly input your details")
+  // console.log("Kindly input your details")
+  // userModel.findOne({email:req.body.email, password:req.body.password})
+  let {email, password } = req.body
+  userModel.findOne({email:email})
+  console.log()
+}
+
+const dashboard = (req,res)=>{
+  console.log(res);
 }
 
 
@@ -44,4 +52,4 @@ const logout = (req, res) => {
 };
 
 
-module.exports = { userWelcome, register, login , logout};
+module.exports = { userWelcome, register, login , logout , dashboard};

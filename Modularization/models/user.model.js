@@ -55,6 +55,17 @@ const userSchema = new mongoose.Schema({
       }
     })
   })
+
+  userSchema.methods.compareUser = function (userPassword, callback){
+    bcrypt.compare(userPassword,this.password,(err,user)=>{
+      if(err){
+        console.log(err);
+      }else{
+        console.log(user);
+      }
+    })
+
+  }
 // const users = mongoose.model('User', userSchema);
 const userModel = mongoose.model('User' ,userSchema);
 module.exports = userModel
