@@ -38,7 +38,20 @@ const login = (req,res)=>{
   // userModel.findOne({email:req.body.email, password:req.body.password})
   let {email, password } = req.body
   userModel.findOne({email:email})
-  console.log()
+  .then((user)=>{
+    console.log('USer Found')
+    user.compareUser(password,(err,result)=>{
+      console.log(result);
+      if (result) {
+        res.send({status:true,message:"User Found"})
+      } else {
+        res.send({status : false ,  message:"User Not Found"})
+      }
+    })
+  })
+  .catch((err)=>{
+    console.log(`User Not found : ${err}`)
+  })
 }
 
 const dashboard = (req,res)=>{
