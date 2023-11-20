@@ -20,7 +20,6 @@ const userWelcome = (req, res) => {
 
 const register = (req,res)=>{
   let form = new userModel(req.body)
-  console.log(form);
   form.save()
     .then((user) => {
       res.status(201).json({ message: 'User registered successfully' });
@@ -33,19 +32,16 @@ const register = (req,res)=>{
 
 }
 
-const login = (req,res)=>{
-  // console.log("Kindly input your details")
-  // userModel.findOne({email:req.body.email, password:req.body.password})
+const login = ( req, res )=>{
   let {email, password } = req.body
   userModel.findOne({email:email})
   .then((user)=>{
-    console.log('USer Found')
     user.compareUser(password,(err,result)=>{
       console.log(result);
       if (result) {
         res.send({status:true,message:"User Found"})
       } else {
-        res.send({status : false ,  message:"User Not Found"})
+        res.send({status : false ,message:"User Not Found"})
       }
     })
   })
@@ -53,6 +49,8 @@ const login = (req,res)=>{
     console.log(`User Not found : ${err}`)
   })
 }
+
+
 
 const dashboard = (req,res)=>{
   console.log(res);
