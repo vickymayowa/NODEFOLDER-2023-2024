@@ -11,9 +11,8 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
 app.use("/", userRoute);
-app.use("/api/register", userRoute);
-app.use("/api/login", userRoute);
-app.use("/api/logout", userRoute)
+app.use("/api", userRoute);
+
 
 app.listen(PORT,()=>{console.log(`Server is running on ${PORT}`)})
 
