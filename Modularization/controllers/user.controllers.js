@@ -84,8 +84,8 @@ const sendMail = (req,res)=>{
   const mailOptions = {
     from: process.env.SENDER_EMAIL,
     to: 'favouradebanjo603@gmail.com,',
-    subject: 'Sending Email using Node.js',
-    html : html 
+    subject: 'Welcome to Digital Sub',
+    html : html   
   };
   
   transporter.sendMail(mailOptions, function(error, info){
